@@ -30,11 +30,10 @@ jobs:
         run: npm run build
         
       - name: RSync Deployment
-        uses: burnett01/rsync-deployments@4.1
-        with:
-          switches: -avzr --delete
-          path: dist/
-          remote_path: ${{ secrets.REMOTE_PATH }}
-          remote_host: ${{ secrets.REMOTE_HOST }}
-          remote_user: ${{ secrets.REMOTE_USER }}
-          remote_key: ${{ secrets.DEPLOY_KEY }}
+        uses: up9cloud/action-rsync@master
+        env:
+          HOST: ${{secrets.REMOTE_HOST}}
+          USER: ${{secrets.REMOTE_USER}}
+          KEY: ${{secrets.REMOTE_KEY}}
+          TARGET: ${{secrets.REMOTE_PATH}}
+          SOURCE: ./dist/
