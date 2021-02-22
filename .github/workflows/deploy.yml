@@ -29,11 +29,12 @@ jobs:
       - name: Build VueJS Applicatoin
         run: npm run build
         
-      - name: Simple FTP deploy
-        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
+      - name: RSync Deployment
+        uses: burnett01/rsync-deployments@4.1
         with:
-          ftp_host: ftp.xandervos.nl
-          ftp_username: ${{ secrets.USERNAME }}
-          ftp_password: ${{ secrets.PASSWORD }}
-          local_source_dir: dist
-          dist_target_dir: ${{ secrets.REMOTE_PATH }}
+          switches: -avzr --delete
+          path: dist/
+          remote_path: ${{ secrets.REMOTE_PATH }}
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_user: ${{ secrets.REMOTE_USER }}
+          remote_key: ${{ secrets.DEPLOY_KEY }}
