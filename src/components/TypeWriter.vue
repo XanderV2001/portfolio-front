@@ -3,7 +3,11 @@
     <span class="typed-text" :style="{ color: tColor }">{{ typeValue }}</span>
     <span
       class="cursor"
-      :class="{ typing: typeStatus }"
+      :class="{
+        typing: typeStatus,
+        cursor: !$vuetify.theme.isDark,
+        'cursor-dark': $vuetify.theme.isDark,
+      }"
       v-html="'&nbsp;'"
     ></span>
   </div>
@@ -35,6 +39,7 @@ export default {
       charIndex: 0,
     };
   },
+
   methods: {
     typeText() {
       if (this.charIndex < this.typeArray[this.typeArrayIndex].length) {
@@ -82,9 +87,29 @@ span.cursor {
   background-color: #000;
   animation: cursorBlink 1s infinite;
 }
+
+span.cursor-dark {
+  display: inline-block;
+  margin-left: 3px;
+  width: 4px;
+  background-color: #fffcf2;
+  animation: cursorBlink-dark 1s infinite;
+}
 span.cursor.typing {
   animation: none;
 }
+@keyframes cursorBlink-dark {
+  49% {
+    background-color: #fffcf2;
+  }
+  50% {
+    background-color: transparent;
+  }
+  99% {
+    background-color: transparent;
+  }
+}
+
 @keyframes cursorBlink {
   49% {
     background-color: #000;

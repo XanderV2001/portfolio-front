@@ -1,7 +1,20 @@
 <template>
   <v-row>
     <v-col>
-      <v-img src="../assets/logo.svg" alt="Logo" max-width="250px"></v-img>
+      <router-link to="/">
+        <v-img
+          src="../assets/logo-dark.svg"
+          alt="Logo"
+          max-width="250px"
+          v-if="$vuetify.theme.isDark"
+        ></v-img>
+        <v-img
+          src="../assets/logo.svg"
+          alt="Logo"
+          max-width="250px"
+          v-else
+        ></v-img>
+      </router-link>
     </v-col>
     <v-col class="d-flex justify-end" v-if="!$vuetify.breakpoint.mobile">
       <v-btn
@@ -40,6 +53,7 @@
 <script>
 export default {
   name: "Nav bar",
+
   data: () => ({
     drawer: false,
     pages: [

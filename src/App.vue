@@ -12,8 +12,13 @@
       />
     </v-container>
     <v-footer padless color="dark2">
-      <v-col class="text-center white--text" cols="12">
+      <v-col class="text-center white--text" cols="10">
         {{ new Date().getFullYear() }} — <strong>Xander Vos</strong>
+      </v-col>
+      <v-col cols="2">
+        <v-btn @click="changeTheme" icon>
+          <v-icon color="white"> mdi-theme-light-dark </v-icon>
+        </v-btn>
       </v-col>
     </v-footer>
   </v-app>
@@ -28,12 +33,24 @@ export default {
     NavBar,
   },
 
+  beforeCreate() {
+    this.$vuetify.theme.isDark = localStorage.getItem("theme") == "true";
+  },
+
   data: () => ({
     buzzWords: [
+      "Xander Vos",
       "Software Engineer",
       "Cyber Security Specialist",
       "Computer Enthousiast",
     ],
   }),
+
+  methods: {
+    changeTheme() {
+      this.$vuetify.theme.isDark = !this.$vuetify.theme.isDark;
+      localStorage.setItem("theme", this.$vuetify.theme.isDark);
+    },
+  },
 };
 </script>
