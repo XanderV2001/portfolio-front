@@ -23,6 +23,9 @@ jobs:
           node-version: 14.12.0
           check-latest: true
       
+      - name: Install dependencies
+        run: npm i
+      
       - name: Build VueJS Applicatoin
         run: npm run build
         
