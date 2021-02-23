@@ -12,13 +12,13 @@
       />
     </v-container>
     <v-footer padless color="dark2">
-      <v-col class="text-center white--text" cols="10">
-        {{ new Date().getFullYear() }} — <strong>Xander Vos</strong>
-      </v-col>
-      <v-col cols="2">
+      <v-col class="text-right" cols="12">
         <v-btn @click="changeTheme" icon>
           <v-icon color="white"> mdi-theme-light-dark </v-icon>
         </v-btn>
+      </v-col>
+      <v-col class="text-center mt-n15 white--text" cols="12">
+        {{ new Date().getFullYear() }} — <strong>Xander Vos</strong>
       </v-col>
     </v-footer>
   </v-app>
