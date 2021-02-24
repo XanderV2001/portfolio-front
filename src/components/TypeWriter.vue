@@ -23,7 +23,7 @@ export default {
 
   computed: {
     tColor: function () {
-      return this.textColor || "#eb5e28";
+      return this.textColor || "var(--v-accent-base)";
     },
   },
 

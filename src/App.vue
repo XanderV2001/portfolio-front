@@ -1,17 +1,12 @@
 <template>
   <v-app>
-    <v-container fluid> <nav-bar /> </v-container>
-    <v-container
-      class="mt-n15 d-flex justify-center align-center"
-      style="height: 100vh"
-      fluid
-    >
-      <type-writer
-        :textArray="buzzWords"
-        class="text-h4 text-sm-h2 text-md-h1 text-lg-h1 text-xl-h1 text-center"
-      />
+    <v-container fluid style="z-index: 9999" class="primary">
+      <nav-bar />
     </v-container>
-    <v-footer padless color="dark2">
+    <v-main class="primary mt-n14">
+      <router-view />
+    </v-main>
+    <v-footer padless color="accent">
       <v-col class="text-right" cols="12">
         <v-btn @click="changeTheme" icon>
           <v-icon color="white"> mdi-theme-light-dark </v-icon>
@@ -25,32 +20,24 @@
 </template>
 
 <script>
-import TypeWriter from "./components/TypeWriter.vue";
 import NavBar from "./components/nav.vue";
 export default {
   components: {
-    TypeWriter,
     NavBar,
   },
 
   beforeCreate() {
-    this.$vuetify.theme.isDark = localStorage.getItem("theme") == "true";
+    this.$vuetify.theme.dark = localStorage.getItem("theme") == "true";
   },
-
-  data: () => ({
-    buzzWords: [
-      "Xander Vos",
-      "Software Engineer",
-      "Cyber Security Specialist",
-      "Computer Enthousiast",
-    ],
-  }),
 
   methods: {
     changeTheme() {
-      this.$vuetify.theme.isDark = !this.$vuetify.theme.isDark;
+      this.$vuetify.theme.dark = !this.$vuetify.theme.isDark;
       localStorage.setItem("theme", this.$vuetify.theme.isDark);
     },
   },
 };
 </script>
+
+<style>
+</style>
