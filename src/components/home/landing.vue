@@ -18,18 +18,16 @@
       </div>
     </v-container>
 
-    <div style="position: absolute; top: 80vh; width: 100vw">
+    <div style="position: absolute; top: 80vh; left: 0px; width: 100vw">
       <div class="d-flex justify-center">
         <v-btn
           outlined
           rounded
           color="accent"
-          class="ml-n7"
           v-scroll-to="{
             el: '#projects',
             duration: 500,
             easing: 'ease-in-out',
-            offset: -725,
           }"
         >
           Projects
@@ -41,7 +39,7 @@
 </template>
 
 <script>
-import TypeWriter from "../components/TypeWriter.vue";
+import TypeWriter from "@/components/TypeWriter.vue";
 export default {
   name: "landing",
 
