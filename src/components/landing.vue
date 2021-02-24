@@ -20,8 +20,20 @@
 
     <div style="position: absolute; top: 80vh; width: 100vw">
       <div class="d-flex justify-center">
-        <v-btn outlined rounded color="accent" class="ml-n7">
-          Projects <v-icon class="ml-3">mdi-arrow-down</v-icon>
+        <v-btn
+          outlined
+          rounded
+          color="accent"
+          class="ml-n7"
+          v-scroll-to="{
+            el: '#projects',
+            duration: 500,
+            easing: 'ease-in-out',
+            offset: -725,
+          }"
+        >
+          Projects
+          <v-icon class="ml-3">mdi-arrow-down</v-icon>
         </v-btn>
       </div>
     </div>
