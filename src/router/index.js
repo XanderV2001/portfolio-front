@@ -19,7 +19,20 @@ const routes = [
         {
           property: 'og:description',
           content: 'Xander Vos, Software Engineer, Cyber Security Specialist, Computer Enthousiast. On this site you will find my portfolio!'
-        }
+        },
+        {
+          name: 'keywords',
+          content: "Software Engineer, Xander, Xander Vos, Cyber Security, Full Stack, Software Developer, Developer, Network, Software"
+        },
+        {
+          name: "subject",
+          content: "Portfolio"
+        },
+        {
+          name: "robots",
+          content: "index, follow"
+        },
+
       ]
     }
   },
