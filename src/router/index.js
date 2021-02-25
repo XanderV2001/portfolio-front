@@ -14,11 +14,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'The home page of our example app.'
+          content: 'Xander Vos, Software Engineer, Cyber Security Specialist, Computer Enthousiast. On this site you will find my portfolio!'
         },
         {
           property: 'og:description',
-          content: 'The home page of our example app.'
+          content: 'Xander Vos, Software Engineer, Cyber Security Specialist, Computer Enthousiast. On this site you will find my portfolio!'
         }
       ]
     }
