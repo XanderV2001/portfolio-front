@@ -69,6 +69,8 @@
               <a
                 v-for="social in socials"
                 :key="social.icon"
+                :href="social.url"
+                target="_blank"
                 class="text-decoration-none"
               >
                 <v-icon color="white" size="32"> {{ social.icon }} </v-icon>
