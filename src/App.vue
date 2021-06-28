@@ -60,14 +60,41 @@
       <router-view />
     </v-main>
     <v-footer padless color="accent">
-      <v-col class="text-right" cols="12">
-        <v-btn @click="changeTheme" icon>
-          <v-icon color="white"> mdi-theme-light-dark </v-icon>
-        </v-btn>
-      </v-col>
-      <v-col class="text-center mt-n15 white--text" cols="12">
-        {{ new Date().getFullYear() }} — <strong>Xander Vos</strong>
-      </v-col>
+      <v-container class="white--text">
+        <v-row>
+          <!-- SOCIALS -->
+          <v-col cols="12" sm="12" md="4" lg="4">
+            <h2 class="text-center mb-3">Socials</h2>
+            <div class="d-flex justify-space-around">
+              <a
+                v-for="social in socials"
+                :key="social.icon"
+                class="text-decoration-none"
+              >
+                <v-icon color="white" size="32"> {{ social.icon }} </v-icon>
+              </a>
+            </div>
+          </v-col>
+          <!-- COPYRIGHT -->
+          <v-col cols="12" sm="12" md="4" lg="4">
+            <h2 class="text-center mb-3">Copyright</h2>
+            <div class="d-flex justify-center pt-1">
+              <span>
+                {{ new Date().getFullYear() }} — <strong> Xander Vos </strong>
+              </span>
+            </div>
+          </v-col>
+          <!-- MISC -->
+          <v-col cols="12" sm="12" md="4" lg="4">
+            <h2 class="text-center mb-3">Misc</h2>
+            <div class="d-flex justify-space-around">
+              <v-btn @click="changeTheme" icon>
+                <v-icon color="white" size="32"> mdi-theme-light-dark </v-icon>
+              </v-btn>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-footer>
   </v-app>
 </template>
@@ -81,6 +108,20 @@ export default {
         href: "/about",
         name: "About",
         color: "accent",
+      },
+    ],
+    socials: [
+      {
+        icon: "mdi-twitter",
+        url: "https://twitter.com/Xander_Vos",
+      },
+      {
+        icon: "mdi-email",
+        url: "mailto:info@xandervos.dev",
+      },
+      {
+        icon: "mdi-github",
+        url: "https://github.com/XanderV2001",
       },
     ],
   }),
