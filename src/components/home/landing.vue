@@ -7,13 +7,18 @@
     >
       <div>
         <h1
-          class="text-h4 text-sm-h2 text-md-h1 text-lg-h1 text-xl-h1 text-center mb-5"
+          class="
+            text-h4 text-sm-h2 text-md-h1 text-lg-h1 text-xl-h1 text-center
+            mb-5
+          "
         >
           Who am I?
         </h1>
         <type-writer
           :textArray="buzzWords"
-          class="text-h4 text-sm-h2 text-md-h1 text-lg-h1 text-xl-h1 text-center"
+          class="
+            text-h4 text-sm-h2 text-md-h1 text-lg-h1 text-xl-h1 text-center
+          "
         />
       </div>
     </v-container>
@@ -48,13 +53,7 @@ export default {
   },
 
   data: () => ({
-    buzzWords: [
-      "Xander Vos",
-      "Software Engineer",
-      "Cyber Security Specialist",
-      "PowerCube",
-      "Computer Enthousiast",
-    ],
+    buzzWords: ["Xander Vos", "Software Engineer", "Computer Enthousiast"],
   }),
 };
 </script>
