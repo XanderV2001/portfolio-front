@@ -106,11 +106,6 @@ export default {
   data: () => ({
     drawer: false,
     pages: [
-      {
-        href: "/about",
-        name: "About",
-        color: "accent",
-      },
     ],
     socials: [
       {

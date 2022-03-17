@@ -22,24 +22,6 @@
         />
       </div>
     </v-container>
-
-    <div style="position: absolute; top: 80vh; left: 0px; width: 100vw">
-      <div class="d-flex justify-center">
-        <v-btn
-          outlined
-          rounded
-          color="accent"
-          v-scroll-to="{
-            el: '#projects',
-            duration: 500,
-            easing: 'ease-in-out',
-          }"
-        >
-          Projects
-          <v-icon class="ml-3">mdi-arrow-down</v-icon>
-        </v-btn>
-      </div>
-    </div>
   </v-container>
 </template>
 
@@ -53,7 +35,7 @@ export default {
   },
 
   data: () => ({
-    buzzWords: ["Xander Vos", "Software Engineer", "Computer Enthousiast"],
+    buzzWords: ["Xander Vos", "Software Engineer", "Computer Enthousiast", ".NET Developer"],
   }),
 };
 </script>

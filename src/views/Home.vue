@@ -1,21 +1,18 @@
 <template>
   <div>
     <landing />
-    <projects />
-    <experience />
+    <skills />
   </div>
 </template>
 
 <script>
 import landing from "@/components/home/landing";
-import projects from "@/components/home/projects";
-import experience from "@/components/home/experience";
+import skills from "@/components/home/skills";
 export default {
   name: "Home",
   components: {
     landing,
-    projects,
-    experience,
+    skills  
   },
 };
 </script>
