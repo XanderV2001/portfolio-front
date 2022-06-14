@@ -1,17 +1,15 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
-import vuetify from './plugins/vuetify';
-import scrollTo from 'vue-scrollto';
+import router from "./router";
+import "./assets/main.css";
 
-Vue.config.productionTip = false
+// Append naive ui style at the end of the head
+const meta = document.createElement('meta')
+meta.name = 'naive-ui-style'
+document.head.appendChild(meta)
 
-Vue.use(scrollTo);
+var app = createApp(App);
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+app.use(router);
+
+app.mount('#app')
