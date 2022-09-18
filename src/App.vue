@@ -2,7 +2,7 @@
   <n-config-provider :theme="theme">
     <n-layout class="h-screen">
       <n-layout-header>
-        <navbar v-on:changeTheme="changeTheme" />
+        <navbar v-on:changeTheme="changeTheme" :theme="theme" />
       </n-layout-header>
 
       <n-layout-content>
@@ -25,8 +25,7 @@ import { darkTheme } from "naive-ui";
 
 export default defineComponent({
   setup() {
-    const theme = ref(null);
-    theme.value = darkTheme;
+    var theme = ref(darkTheme);
 
     const changeTheme = () => {
       theme.value = theme.value == null ? darkTheme : null;

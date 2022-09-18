@@ -6,10 +6,8 @@
             <n-menu :value="activeKey" mode="horizontal" :options="menuOptions" />
 
         </div>
-        <div class="flex-none">
-            <n-button quaternary @click="emitChangeTheme">
-                Change theme
-            </n-button>
+        <div class="flex-none cursor-pointer mt-2 mr-1" @click="emitChangeTheme">
+            <n-icon :component="currentTheme == 'dark' ? LightModeIcon : DarkModeIcon" size="25" />
         </div>
         <div class="flex-none">
             <n-button secondary type="primary">
@@ -20,26 +18,30 @@
 </template>
 
 <script>
-import { defineComponent, h, ref } from "vue";
-import { NIcon } from "naive-ui";
+import { defineComponent, ref } from "vue";
 import {
-    BookOutline as BookIcon,
-} from "@vicons/ionicons5";
-import { RouterLink } from "vue-router";
+    DarkModeOutlined as DarkModeIcon,
+    LightModeOutlined as LightModeIcon
+} from "@vicons/material";
 
-function renderIcon(icon) {
-    return () => h(NIcon, null, { default: () => h(icon) });
-}
-
-const menuOptions = [
-];
+var currentTheme = ref(String);
 
 export default defineComponent({
+
+    props: [
+        "theme"
+    ],
+
+    watch: {
+        "theme": (val, _oldVal) => {
+            currentTheme.value = val === null ? "" : val.name;
+        }
+    },
 
     emits: ["changeTheme"],
 
     setup(props, { emit }) {
-        const activeKey = ref(null);
+        currentTheme.value = props.theme.name || "";
 
         const emitChangeTheme = () => {
             emit("changeTheme");
@@ -47,8 +49,9 @@ export default defineComponent({
 
         return {
             emitChangeTheme,
-            menuOptions,
-            activeKey
+            currentTheme,
+            DarkModeIcon,
+            LightModeIcon
         }
     }
 
