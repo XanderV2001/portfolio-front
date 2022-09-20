@@ -2,7 +2,7 @@
   <n-config-provider :theme="theme">
     <n-layout class="h-screen">
       <n-layout-header class="sticky top-0 z-10">
-        <navbar v-on:changeTheme="changeTheme" :theme="theme" v-on:showLoginModal="showLoginModal"
+        <navbar v-on:changeTheme="changeTheme" :theme="theme" v-on:showLoginModal="showLoginModal" :logIn="loggedIn"
           v-on:loggedOut="logoutUser" />
       </n-layout-header>
 
@@ -36,6 +36,7 @@ export default defineComponent({
 
       theme: darkTheme,
       loginModalVisible: false,
+      loggedIn: false,
 
     }
   },
@@ -55,6 +56,7 @@ export default defineComponent({
     },
 
     loggedInSuccesfully() {
+      this.loggedIn = true;
       this.loginModalVisible = false;
     },
 

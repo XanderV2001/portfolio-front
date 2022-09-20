@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from "./router";
 import "./assets/main.css";
-import PocketBase from 'pocketbase';
+import PocketBase from 'pocketbase'; 
 
 const client = new PocketBase('https://pocketbase.xandervos.dev');
 
@@ -19,7 +19,5 @@ app.config.globalProperties.loggedIn = false;
 app.use(router);
 
 client.authStore.loadFromCookie(document.cookie);
-
-console.log(client.authStore);
 
 app.mount('#app')

@@ -36,13 +36,17 @@ export default defineComponent({
 
     props: [
         "theme",
+        "logIn"
     ],
 
     emits: ["changeTheme", "showLoginModal"],
 
     computed: {
         currentTheme() { return this.theme !== null ? this.theme.name : "" },
-        loggedIn() { return this.pocketbase.authStore.isValid },
+        loggedIn() {
+            this.loggedOutFlag;
+            return this.pocketbase.authStore.isValid || this.logIn;
+        },
         user() { return this.pocketbase.authStore.model }
     },
 
@@ -50,7 +54,8 @@ export default defineComponent({
         return {
 
             DarkModeIcon,
-            LightModeIcon
+            LightModeIcon,
+            loggedOutFlag: 0,
 
         }
     },
@@ -67,7 +72,8 @@ export default defineComponent({
 
         logoutUser() {
             this.pocketbase.authStore.clear();
-            document.cookie = "";
+            document.cookie = this.pocketbase.authStore.exportToCookie({ httpOnly: false, expires: new Date(Date.now()) });
+            this.loggedOutFlag++;
             this.$emit("loggedOut")
         }
 
