@@ -35,6 +35,7 @@
 
 <script>
 import { defineComponent } from "vue";
+import { } from 'http'
 
 export default defineComponent({
 
@@ -56,6 +57,9 @@ export default defineComponent({
             this.loginLoading = true;
             await this.pocketbase.users.authViaEmail(this.formValue.email, this.formValue.password);
             this.loginLoading = false;
+
+            document.cookie = this.pocketbase.authStore.exportToCookie({ httpOnly: false, expires: new Date(Date.now() + 12096e5) });
+
             this.$emit("loggedInSuccesfully");
         },
 

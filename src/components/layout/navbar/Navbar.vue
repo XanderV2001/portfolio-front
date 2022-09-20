@@ -36,17 +36,14 @@ export default defineComponent({
 
     props: [
         "theme",
-        "loggedIn"
     ],
 
     emits: ["changeTheme", "showLoginModal"],
 
     computed: {
         currentTheme() { return this.theme !== null ? this.theme.name : "" },
-        loggedIn() { return this.loggedIn },
-        user() {
-            return this.pocketbase.authStore.model;
-        }
+        loggedIn() { return this.pocketbase.authStore.isValid },
+        user() { return this.pocketbase.authStore.model }
     },
 
     data() {
@@ -70,6 +67,7 @@ export default defineComponent({
 
         logoutUser() {
             this.pocketbase.authStore.clear();
+            document.cookie = "";
             this.$emit("loggedOut")
         }
 

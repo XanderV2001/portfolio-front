@@ -14,7 +14,12 @@ document.head.appendChild(meta)
 var app = createApp(App);
 
 app.config.globalProperties.pocketbase = client;
+app.config.globalProperties.loggedIn = false;
 
 app.use(router);
+
+client.authStore.loadFromCookie(document.cookie);
+
+console.log(client.authStore);
 
 app.mount('#app')
