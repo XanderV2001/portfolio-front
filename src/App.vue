@@ -1,12 +1,17 @@
 <template>
   <n-config-provider :theme="theme">
     <n-layout class="h-screen">
-      <n-layout-header>
-        <navbar v-on:changeTheme="changeTheme" :theme="theme" />
+      <n-layout-header class="sticky top-0 z-10">
+        <navbar v-on:changeTheme="changeTheme" :theme="theme" v-on:showLoginModal="showLoginModal" :loggedIn="loggedIn"
+          v-on:loggedOut="logoutUser" />
       </n-layout-header>
 
       <n-layout-content>
-        <n-message-provider>
+        <n-message-provider placement="bottom">
+
+          <LoginModal v-if="loginModalVisible" v-on:closeLoginModal="closeLoginModal"
+            v-on:loggedInSuccesfully="loggedInSuccesfully" />
+
           <n-notification-provider>
             <router-view />
           </n-notification-provider>
@@ -20,21 +25,58 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import { darkTheme } from "naive-ui";
+import { Account } from "appwrite";
+
+
 
 export default defineComponent({
-  setup() {
-    var theme = ref(darkTheme);
 
-    const changeTheme = () => {
-      theme.value = theme.value == null ? darkTheme : null;
+  data() {
+    return {
+
+      theme: darkTheme,
+      loginModalVisible: false,
+      loggedIn: false
+      
+    }
+  },
+
+  async created() {
+    const account = new Account(this.appwrite);
+
+    try {
+      await account.get();
+      this.loggedIn = true;
+    } catch {
+      this.loggedIn = false;
+    }
+  },
+
+  methods: {
+
+    changeTheme() {
+      this.theme = this.theme == null ? darkTheme : null;
+    },
+
+    showLoginModal() {
+      this.loginModalVisible = true;
+    },
+
+    closeLoginModal() {
+      this.loginModalVisible = false;
+    },
+
+    loggedInSuccesfully() {
+      this.loggedIn = true;
+      this.loginModalVisible = false;
+    },
+
+    logoutUser() {
+      this.loggedIn = false;
     }
 
-    return {
-      theme,
-      changeTheme,
-    };
   },
 });
 </script>
