@@ -18,12 +18,13 @@
             </n-button>
 
             <n-button secondary type="primary" @click="logoutUser" v-else>
-                Logout | {{ user.email }}
+                Logout | {{ user.name || "..." }}
             </n-button>
 
         </div>
     </div>
 </template>
+
 
 <script>
 import { defineComponent } from "vue";
@@ -31,23 +32,41 @@ import {
     DarkModeOutlined as DarkModeIcon,
     LightModeOutlined as LightModeIcon
 } from "@vicons/material";
+import { Account } from "appwrite";
 
 export default defineComponent({
 
     props: [
         "theme",
-        "logIn"
+        "loggedIn"
     ],
 
     emits: ["changeTheme", "showLoginModal"],
 
     computed: {
         currentTheme() { return this.theme !== null ? this.theme.name : "" },
-        loggedIn() {
-            this.loggedOutFlag;
-            return this.pocketbase.authStore.isValid || this.logIn;
-        },
-        user() { return this.pocketbase.authStore.model }
+        loggedIn() { return this.loggedIn },
+    },
+
+    created() {
+        if (this.loggedIn) {
+            const account = new Account(this.appwrite);
+            account.get().then(result => {
+                this.user = result;
+            })
+        }
+    },
+
+    watch: {
+        loggedIn: function (newVal, _oldVal) {
+            console.log(newVal, _oldVal, this.appwrite);
+            if (newVal === true) {
+                const account = new Account(this.appwrite);
+                account.get().then(result => {
+                    this.user = result;
+                })
+            }
+        }
     },
 
     data() {
@@ -55,7 +74,8 @@ export default defineComponent({
 
             DarkModeIcon,
             LightModeIcon,
-            loggedOutFlag: 0,
+
+            user: {},
 
         }
     },
@@ -71,9 +91,8 @@ export default defineComponent({
         },
 
         logoutUser() {
-            this.pocketbase.authStore.clear();
-            document.cookie = this.pocketbase.authStore.exportToCookie({ httpOnly: false, expires: new Date(Date.now()) });
-            this.loggedOutFlag++;
+            const account = new Account(this.appwrite);
+            account.deleteSession('current');
             this.$emit("loggedOut")
         }
 

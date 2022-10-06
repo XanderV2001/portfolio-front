@@ -15,7 +15,7 @@
                 <n-form-item label="Password" path="password">
                     <n-input v-model:value="formValue.password" placeholder="Password" type="password" />
                 </n-form-item>
-
+                
                 <template #action>
                     <div class="float-right">
 
@@ -35,7 +35,8 @@
 
 <script>
 import { defineComponent } from "vue";
-import { } from 'http'
+import { useMessage } from "naive-ui";
+import { Account } from 'appwrite';
 
 export default defineComponent({
 
@@ -48,6 +49,7 @@ export default defineComponent({
                 password: '',
             },
             loginLoading: false,
+            message: useMessage(),
         }
     },
 
@@ -55,12 +57,15 @@ export default defineComponent({
 
         async loginUser() {
             this.loginLoading = true;
-            await this.pocketbase.users.authViaEmail(this.formValue.email, this.formValue.password);
-            this.loginLoading = false;
-
-            document.cookie = this.pocketbase.authStore.exportToCookie({ httpOnly: false, expires: new Date(Date.now() + 12096e5) });
-
-            this.$emit("loggedInSuccesfully");
+            const account = new Account(this.appwrite);
+            try {
+                await account.createEmailSession(this.formValue.email, this.formValue.password);
+                this.$emit("loggedInSuccesfully");
+            } catch {
+                this.message.error("Login failed, try a different email and/or password!")
+            } finally {
+                this.loginLoading = false;
+            }
         },
 
         closeLoginModal() {

@@ -2,14 +2,14 @@
   <n-config-provider :theme="theme">
     <n-layout class="h-screen">
       <n-layout-header class="sticky top-0 z-10">
-        <navbar v-on:changeTheme="changeTheme" :theme="theme" v-on:showLoginModal="showLoginModal" :logIn="loggedIn"
+        <navbar v-on:changeTheme="changeTheme" :theme="theme" v-on:showLoginModal="showLoginModal" :loggedIn="loggedIn"
           v-on:loggedOut="logoutUser" />
       </n-layout-header>
 
       <n-layout-content>
-        <n-message-provider>
+        <n-message-provider placement="bottom">
 
-          <LoginModal v-if=" loginModalVisible" v-on:closeLoginModal="closeLoginModal"
+          <LoginModal v-if="loginModalVisible" v-on:closeLoginModal="closeLoginModal"
             v-on:loggedInSuccesfully="loggedInSuccesfully" />
 
           <n-notification-provider>
@@ -27,6 +27,8 @@
 <script>
 import { defineComponent } from "vue";
 import { darkTheme } from "naive-ui";
+import { Account } from "appwrite";
+
 
 
 export default defineComponent({
@@ -36,8 +38,19 @@ export default defineComponent({
 
       theme: darkTheme,
       loginModalVisible: false,
-      loggedIn: false,
+      loggedIn: false
+      
+    }
+  },
 
+  async created() {
+    const account = new Account(this.appwrite);
+
+    try {
+      await account.get();
+      this.loggedIn = true;
+    } catch {
+      this.loggedIn = false;
     }
   },
 
@@ -65,7 +78,6 @@ export default defineComponent({
     }
 
   },
-
 });
 </script>
 
