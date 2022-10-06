@@ -59,7 +59,6 @@ export default defineComponent({
 
     watch: {
         loggedIn: function (newVal, _oldVal) {
-            console.log(newVal, _oldVal, this.appwrite);
             if (newVal === true) {
                 const account = new Account(this.appwrite);
                 account.get().then(result => {
