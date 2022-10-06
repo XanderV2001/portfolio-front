@@ -15,6 +15,7 @@
                 <n-form-item label="Password" path="password">
                     <n-input v-model:value="formValue.password" placeholder="Password" type="password" />
                 </n-form-item>
+                
                 <template #action>
                     <div class="float-right">
 

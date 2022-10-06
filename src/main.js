@@ -13,9 +13,10 @@ var client = new Client().setEndpoint('https://appwrite.xandervos.dev/v1').setPr
 
 var app = createApp(App);
 
-
 app.config.globalProperties.appwrite = client;
 
 app.use(router);
+
+client.authStore.loadFromCookie(document.cookie);
 
 app.mount('#app')

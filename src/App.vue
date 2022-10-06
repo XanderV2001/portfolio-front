@@ -30,6 +30,7 @@ import { darkTheme } from "naive-ui";
 import { Account } from "appwrite";
 
 
+
 export default defineComponent({
 
   data() {
@@ -38,7 +39,7 @@ export default defineComponent({
       theme: darkTheme,
       loginModalVisible: false,
       loggedIn: false
-
+      
     }
   },
 
@@ -77,7 +78,6 @@ export default defineComponent({
     }
 
   },
-
 });
 </script>
 
