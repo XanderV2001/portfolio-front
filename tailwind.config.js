@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        'screen-navbar': 'calc(100vh - 4.125rem)'
+        'screen-navbar': 'calc(100vh - 3.9rem)'
       }
     },
   },

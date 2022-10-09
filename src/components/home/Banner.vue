@@ -11,7 +11,7 @@
                     <linkedin-icon />
                 </n-icon>
             </n-button>
-            <n-button disabled secondary type="primary" class="z-10" size="large">
+            <n-button secondary type="primary" class="z-10" size="large" @click="scrollToProjects">
                 See projects
             </n-button>
             <n-button text type="primary" class="z-10" size="large" href="https://github.com/xanderv2001" tag="a"
@@ -35,6 +35,12 @@ export default defineComponent({
     components: {
         GithubIcon,
         LinkedinIcon
+    },
+
+    methods: {
+        scrollToProjects(e) {
+            document.querySelector("#projects").scrollIntoView({ behavior: "smooth" });
+        }
     }
 })
 

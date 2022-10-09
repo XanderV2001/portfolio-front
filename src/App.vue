@@ -1,6 +1,6 @@
 <template>
   <n-config-provider :theme="theme">
-    <n-layout class="h-screen">
+    <n-layout class="h-screen" :native-scrollbar="false">
       <n-layout-header class="sticky top-0 z-10">
         <navbar v-on:changeTheme="changeTheme" :theme="theme" v-on:showLoginModal="showLoginModal" :loggedIn="loggedIn"
           v-on:loggedOut="logoutUser" />
@@ -39,7 +39,7 @@ export default defineComponent({
       theme: darkTheme,
       loginModalVisible: false,
       loggedIn: false
-      
+
     }
   },
 
@@ -82,6 +82,11 @@ export default defineComponent({
 </script>
 
 <style>
+.n-scrollbar-rail {
+  /* Force scrollbar to always be on top */
+  z-index: 99999 !important;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

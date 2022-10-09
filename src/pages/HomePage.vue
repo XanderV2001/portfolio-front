@@ -1,10 +1,16 @@
 <template>
 
-  <div>
+  <section id="landing">
 
     <banner />
 
-  </div>
+  </section>
+
+  <section id="projects">
+
+    <projects />
+
+  </section>
 
 </template>
 
