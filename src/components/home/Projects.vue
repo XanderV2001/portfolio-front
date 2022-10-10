@@ -8,7 +8,7 @@
         <n-card :title="project.project_name" class="max-w-sm max-h-96" hoverable v-for="project in projects"
             :key="project.$id">
             <template #cover>
-                <img :src="project.banner_image">
+                <img :src="project.banner_image" alt="Project Banner">
             </template>
 
             <template #header-extra>

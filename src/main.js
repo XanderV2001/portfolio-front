@@ -9,9 +9,9 @@ const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
 document.head.appendChild(meta)
 
-var client = new Client().setEndpoint('https://appwrite.xandervos.dev/v1').setProject("633efa4b4b9a75c6d556");
+const client = new Client().setEndpoint('https://appwrite.xandervos.dev/v1').setProject("633efa4b4b9a75c6d556");
 
-var app = createApp(App);
+const app = createApp(App);
 
 app.config.globalProperties.appwrite = client;
 
