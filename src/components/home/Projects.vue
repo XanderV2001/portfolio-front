@@ -3,7 +3,10 @@
     <div class="w-screen h-screen-navbar flex justify-center items-center flex-row gap-32">
 
 
-        <n-card :title="project.project_name" class="max-w-sm max-h-96" v-for="project in projects" :key="project.$id">
+
+
+        <n-card :title="project.project_name" class="max-w-sm max-h-96" hoverable v-for="project in projects"
+            :key="project.$id">
             <template #cover>
                 <img :src="project.banner_image">
             </template>
@@ -36,7 +39,7 @@
 <script>
 import { defineComponent } from "vue";
 import { Github as GithubIcon, LinkedinIn as LinkedinIcon, ExternalLinkAlt as OpenExternallyIcon } from '@vicons/fa';
-import { Databases, Query } from "appwrite";
+import { Account, Databases, Query } from "appwrite";
 
 
 export default defineComponent({
@@ -54,12 +57,20 @@ export default defineComponent({
 
     data() {
         return {
-            projects: []
+            projects: [],
+            user: {}
         }
     },
 
     async created() {
         const database = new Databases(this.appwrite);
+        const user = new Account(this.appwrite);
+
+        user.get().then(user => {
+            this.user = user;
+        }).catch(_e => {
+            this.user = {};
+        });
 
         const result = await database.listDocuments("634358a1a37903a67ee0", "634358a8383af6216985", [Query.equal('is_featured', true)]);
 
