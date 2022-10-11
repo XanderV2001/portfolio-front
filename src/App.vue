@@ -9,8 +9,9 @@
       <n-layout-content>
         <n-message-provider placement="bottom">
 
-          <LoginModal v-if="loginModalVisible" v-on:closeLoginModal="closeLoginModal"
-            v-on:loggedInSuccesfully="loggedInSuccesfully" />
+          <n-modal closable v-model:show="loginModalVisible">
+            <LoginModal v-on:loggedInSuccesfully="loggedInSuccesfully" />
+          </n-modal>
 
           <n-notification-provider>
             <router-view />
@@ -62,10 +63,6 @@ export default defineComponent({
 
     showLoginModal() {
       this.loginModalVisible = true;
-    },
-
-    closeLoginModal() {
-      this.loginModalVisible = false;
     },
 
     loggedInSuccesfully() {
