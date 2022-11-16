@@ -87,6 +87,7 @@ export default defineComponent({
     },
 
     async created() {
+        console.log(this.appwrite);
         const database = new Databases(this.appwrite);
         const user = new Account(this.appwrite);
 
