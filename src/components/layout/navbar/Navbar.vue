@@ -1,9 +1,10 @@
 <template>
     <div class="flex flex-row py-3 px-4 items-center gap-2">
-        <div class="flex-none text-2xl">&lt;Xander /&gt;</div>
-        <div class="flex-1">
+        <router-link to="/" class="flex-none text-2xl">&lt;Xander /&gt;</router-link>
+        <div class="flex-1 ml-4">
 
-            <n-menu :value="activeKey" mode="horizontal" :options="menuOptions" />
+            <router-link to="/" class="mr-4 link-underline link-underline-black ">Home</router-link>
+            <router-link to="/about" class="mr-4 link-underline link-underline-black ">About</router-link>
 
         </div>
 
@@ -25,6 +26,26 @@
     </div>
 </template>
 
+<style>
+.link-underline {
+    border-bottom-width: 0;
+    padding-bottom: 2px;
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+    background-size: 0 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size .25s ease-in-out;
+}
+
+.link-underline-black {
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#36ad6a, #36ad6a)
+}
+
+.link-underline:hover {
+    background-size: 100% 2px;
+    background-position: 0 100%
+}
+</style>
 
 <script>
 import { defineComponent } from "vue";
@@ -75,6 +96,10 @@ export default defineComponent({
             LightModeIcon,
 
             user: {},
+
+            menuOptions: [
+                {}
+            ]
 
         }
     },
