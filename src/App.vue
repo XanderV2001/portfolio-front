@@ -14,7 +14,7 @@
           </n-modal>
 
           <n-notification-provider>
-            <router-view />
+            <router-view :theme="theme" />
           </n-notification-provider>
         </n-message-provider>
       </n-layout-content>

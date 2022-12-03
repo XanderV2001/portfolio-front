@@ -9,6 +9,11 @@ const routes = [
     meta: {
       isPublic: true
     }
+  },
+  {
+    path: "/test",
+    name: "test",
+    component: () => import("../pages/TestPage.vue")
   }
 ]
 
