@@ -20,8 +20,13 @@ export class Canvas {
   init() {
     this.clearScreen();
 
+    let amountOfObjects = Math.ceil(
+      this.maxObjects / (this.cHeight / this.cWidth)
+    );
+    console.log(amountOfObjects);
+
     this.objects = [];
-    for (let i = 0; i < this.maxObjects; i++) {
+    for (let i = 0; i < amountOfObjects; i++) {
       this.objects.push(
         new Circle(
           this.ctx,
@@ -54,7 +59,7 @@ export class Canvas {
       let sorted = sortObjectsFromPoint(this.objects, object);
 
       let searchRadius = 100;
-      let maxSearchItems = 20;
+      let maxSearchItems = this.maxObjects > 20 ? 20 : this.maxObjects;
 
       for (let i = 0; i < maxSearchItems; i++) {
         let oCompare = sorted[i];
