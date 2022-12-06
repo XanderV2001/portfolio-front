@@ -1,4 +1,4 @@
-import { random, sortObjectsFromPoint } from "./utils.js";
+import { random, sortObjectsFromPoint, clamp } from "./utils.js";
 
 export class Canvas {
   constructor(ctx, cWidth, cHeight, theme, maxObjects) {
@@ -8,6 +8,7 @@ export class Canvas {
     this.theme = theme;
     this.objects = [];
     this.maxObjects = maxObjects;
+    this.amountOfObjects = 0;
   }
 
   clearScreen() {
@@ -20,13 +21,15 @@ export class Canvas {
   init() {
     this.clearScreen();
 
-    let amountOfObjects = Math.ceil(
-      this.maxObjects / (this.cHeight / this.cWidth)
+    this.amountOfObjects = clamp(
+      Math.ceil(this.maxObjects / (this.cHeight / this.cWidth)),
+      0,
+      this.maxObjects
     );
-    console.log(amountOfObjects);
+    console.log(this.amountOfObjects);
 
     this.objects = [];
-    for (let i = 0; i < amountOfObjects; i++) {
+    for (let i = 0; i < this.amountOfObjects; i++) {
       this.objects.push(
         new Circle(
           this.ctx,
@@ -59,7 +62,8 @@ export class Canvas {
       let sorted = sortObjectsFromPoint(this.objects, object);
 
       let searchRadius = 100;
-      let maxSearchItems = this.maxObjects > 20 ? 20 : this.maxObjects;
+      let maxSearchItems =
+        this.amountOfObjects > 20 ? 20 : this.amountOfObjects;
 
       for (let i = 0; i < maxSearchItems; i++) {
         let oCompare = sorted[i];

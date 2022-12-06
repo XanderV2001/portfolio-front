@@ -23,3 +23,5 @@ export const sortObjectsFromPoint = (objects, point) => {
 
   return sortedArray;
 };
+
+export const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
