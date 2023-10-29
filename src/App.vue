@@ -27,7 +27,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import { darkTheme } from "naive-ui";
+import { darkTheme, lightTheme } from "naive-ui";
 import { Account } from "appwrite";
 
 
@@ -58,7 +58,7 @@ export default defineComponent({
   methods: {
 
     changeTheme() {
-      this.theme = this.theme == null ? darkTheme : null;
+      this.theme = this.theme.name == lightTheme.name ? darkTheme : lightTheme;
     },
 
     showLoginModal() {
