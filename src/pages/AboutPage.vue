@@ -38,16 +38,15 @@
             ensures that applications run smoothly, even under high loads.
         </p>
         <p class="text-lg">
-            I'm a strong advocate for best practices in software development, including test-driven development,
-            version control, and continuous integration. Collaboration and communication are also vital aspects of my work;
+            I'm a strong advocate for best practices in software development, including version control, and continuous
+            integration. Collaboration and communication are also vital aspects of my work;
             I thrive in a team environment and am skilled at translating complex technical concepts into plain language for
             stakeholders.
         </p>
         <p class="text-lg">
             With a passion for lifelong learning, I stay up-to-date with the latest industry trends, ensuring my
             skills remain current and adaptable to emerging technologies. I believe that there is always room for
-            improvement and
-            innovation, and I embrace the opportunity to learn and grow in this ever-evolving field.
+            improvement and innovation, and I embrace the opportunity to learn and grow in this ever-evolving field.
         </p>
         <p class="text-lg">
             I'm excited about the endless possibilities in the software engineering realm, and I'm always looking
