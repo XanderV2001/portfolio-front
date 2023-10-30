@@ -31,7 +31,11 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-  workflow_dispatch:
+  workflow_dispatch:  
+  workflow_run:
+    workflows: ["Dependabot PR Check"]
+    types: 
+      - completed
 
 permissions:
   pull-requests: read # allows SonarQube to decorate PRs with analysis results
