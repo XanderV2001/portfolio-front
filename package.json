@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "appwrite": "^10.1.0",
+    "appwrite": "^13.0.0",
     "vue": "^3.3.7",
     "vue-router": "^4.0.16"
   },
