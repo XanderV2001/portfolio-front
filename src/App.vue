@@ -19,9 +19,15 @@
         </n-message-provider>
       </n-layout-content>
 
-      <n-layout-footer></n-layout-footer>
+      <n-layout-footer class="h-20 w-screen bg-slate">
 
+        <section>
+
+        </section>
+
+      </n-layout-footer>
     </n-layout>
+
   </n-config-provider>
 </template>
 

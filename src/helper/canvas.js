@@ -26,7 +26,6 @@ export class Canvas {
       0,
       this.maxObjects
     );
-    console.log(this.amountOfObjects);
 
     this.objects = [];
     for (let i = 0; i < this.amountOfObjects; i++) {
@@ -69,7 +68,7 @@ export class Canvas {
         let oCompare = sorted[i];
         const isInside =
           Math.pow(oCompare.x - object.x, 2) +
-            Math.pow(oCompare.y - object.y, 2) <=
+          Math.pow(oCompare.y - object.y, 2) <=
           Math.pow(searchRadius, 2);
 
         if (isInside) {

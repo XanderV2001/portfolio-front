@@ -1,5 +1,5 @@
 <template>
-    <section class="container mx-auto px-4 flex gap-10 flex-col py-2">
+    <section class="container mx-auto px-4 flex gap-10 flex-col py-2 h-screen-navbar">
         <div class="w-full flex gap-6 md:gap-16 pt-20 pb-12 px-10 flex-col sm:flex-row items-center">
             <img src="/xander.jpg" class="rounded drop-shadow-lg w-48 sm:w-52 md:w-60 lg:w-80" />
             <div class="flex flex-col justify-around">

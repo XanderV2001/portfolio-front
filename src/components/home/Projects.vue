@@ -1,5 +1,4 @@
 <template>
-
     <div class="w-screen relative">
 
         <div class="min-h-screen-navbar flex justify-center items-center flex-row gap-32 flex-wrap mx-4 sm:mx-0">
@@ -11,8 +10,7 @@
 
                 <template #header-extra>
                     <div class="flex gap-3">
-                        <n-button text tag="a" :href="project.github_url" target="_blank"
-                            v-if="project.github_url != null">
+                        <n-button text tag="a" :href="project.github_url" target="_blank" v-if="project.github_url != null">
                             <n-icon size="20">
                                 <github-icon />
                             </n-icon>
@@ -27,7 +25,7 @@
                     </div>
                 </template>
 
-                {{project.project_description}}
+                {{ project.project_description }}
             </n-card>
         </div>
 
@@ -46,7 +44,6 @@
         </div>
 
     </div>
-
 </template>
 
 
@@ -87,7 +84,6 @@ export default defineComponent({
     },
 
     async created() {
-        console.log(this.appwrite);
         const database = new Databases(this.appwrite);
         const user = new Account(this.appwrite);
 
